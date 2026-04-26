@@ -1,0 +1,32 @@
+Exercícios AWK e SED - Respostas
+Elisa Rachel Beninca Martins
+
+1. awk -F' ' '{print $1, $7}' arquivo.log
+
+2. sed '1d' arquivo.log
+
+3. awk 'NR > 1 && $9 > 200' arquivo.log
+
+4. sed 's/DataCenter/Servidores/g' arquivo.log
+
+5. awk '$9 == 200 {count++} END {print count}' arquivo.log
+
+6. sed '/ERRO/d' arquivo.log
+
+7. awk 'NR > 1 {sum += $10; count++} END {printf "Media de bytes: %.2f\n", sum/count}' acessos.log
+
+8. sed 's/-/\//g' acessos.log
+
+9. awk '{count[$1]++} END {for (ip in count) print ip, count[ip]}' acessos.log
+
+10. sed -n 's/ 403 / EMERGENCIA /p' acessos.log
+
+11. sed 's/"//g' acessos.log | awk '{print $6, $9}'
+
+12. awk 'BEGIN {max=0} {if ($10+0 > max) max=$10+0} END {print "Maior volume:", max, "bytes"}' acessos.log
+
+13. sed '/192\.168\.1\.10/s/$/ [INSPECIONADO]/' acessos.log
+
+14. awk '{printf "%-30s %s\n", $7, $10}' acessos.log
+
+15. grep "catalogo.html" acessos.log | awk '{sum += $10} END {print "Total bytes /catalogo.html:", sum}'
